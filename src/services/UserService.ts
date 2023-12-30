@@ -9,16 +9,15 @@ export const fetchUsers = async (): Promise<User[]> => {
   return response.data;
 };
 
+// services/UserService.ts
 export const createUser = async (user: User): Promise<User> => {
-  const response = await axios.post<User>(API_URL, user);
-  return response.data;
-};
-
-export const updateUser = async (user: User): Promise<User> => {
-  const response = await axios.put<User>(`${API_URL}/${user.id}`, user);
+  const response = await axios.post<User>(`${API_URL}`, user);
+  console.log('Created User:', response.data);
   return response.data;
 };
 
 export const deleteUser = async (id: number): Promise<void> => {
-  await axios.delete(`${API_URL}/${id}`);
+  const response = await axios.delete(`${API_URL}/${id}`);
+  console.log('Deleted User Response:', response.data);
 };
+

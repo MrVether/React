@@ -27,7 +27,7 @@ const TodoList: React.FC = () => {
       <CreateTodoForm onTodoCreated={loadTodos} />
       {todos.map(todo => (
         <div key={todo.id}>
-          <p>{todo.title}</p>
+          <p>{todo.title} - {todo.completed ? 'Completed' : 'Not Completed'}</p>
           <button onClick={() => handleDelete(todo.id)}>Delete</button>
         </div>
       ))}

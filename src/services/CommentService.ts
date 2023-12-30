@@ -9,11 +9,15 @@ export const fetchComments = async (): Promise<Comment[]> => {
   return response.data;
 };
 
+// services/CommentService.ts
 export const createComment = async (comment: Comment): Promise<Comment> => {
-  const response = await axios.post<Comment>(API_URL, comment);
+  const response = await axios.post<Comment>(`${API_URL}`, comment);
+  console.log('Created Comment:', response.data);
   return response.data;
 };
 
 export const deleteComment = async (id: number): Promise<void> => {
-  await axios.delete(`${API_URL}/${id}`);
+  const response = await axios.delete(`${API_URL}/${id}`);
+  console.log('Deleted Comment Response:', response.data);
 };
+

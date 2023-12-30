@@ -9,11 +9,15 @@ export const fetchAlbums = async (): Promise<Album[]> => {
   return response.data;
 };
 
+// services/AlbumService.ts
 export const createAlbum = async (album: Album): Promise<Album> => {
-  const response = await axios.post<Album>(API_URL, album);
+  const response = await axios.post<Album>(`${API_URL}`, album);
+  console.log('Created Album:', response.data);
   return response.data;
 };
 
 export const deleteAlbum = async (id: number): Promise<void> => {
-  await axios.delete(`${API_URL}/${id}`);
+  const response = await axios.delete(`${API_URL}/${id}`);
+  console.log('Deleted Album Response:', response.data);
 };
+

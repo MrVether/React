@@ -10,10 +10,22 @@ export const fetchTodos = async (): Promise<Todo[]> => {
 };
 
 export const createTodo = async (todo: Todo): Promise<Todo> => {
+  try {
   const response = await axios.post<Todo>(API_URL, todo);
+  console.log('Created Todo:', response.data);
   return response.data;
+} catch (error) {
+  console.error('Error creating todo:', error);
+  throw error;
+}
 };
 
 export const deleteTodo = async (id: number): Promise<void> => {
-  await axios.delete(`${API_URL}/${id}`);
+  try {
+    const response = await axios.delete(`${API_URL}/${id}`);
+    console.log('Deleted Todo Response:', response.data);
+  } catch (error) {
+    console.error('Error deleting todo:', error);
+  }
 };
+

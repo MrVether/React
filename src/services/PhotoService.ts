@@ -9,11 +9,14 @@ export const fetchPhotos = async (): Promise<Photo[]> => {
   return response.data;
 };
 
+// services/PhotoService.ts
 export const createPhoto = async (photo: Photo): Promise<Photo> => {
-  const response = await axios.post<Photo>(API_URL, photo);
+  const response = await axios.post<Photo>(`${API_URL}`, photo);
+  console.log('Created Photo:', response.data);
   return response.data;
 };
 
 export const deletePhoto = async (id: number): Promise<void> => {
-  await axios.delete(`${API_URL}/${id}`);
+  const response = await axios.delete(`${API_URL}/${id}`);
+  console.log('Deleted Photo Response:', response.data);
 };
