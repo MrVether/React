@@ -22,13 +22,15 @@ const AlbumList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container my-3">
       <h1>Albums</h1>
       <CreateAlbumForm onAlbumCreated={loadAlbums} />
       {albums.map(album => (
-        <div key={album.id}>
-          <p>{album.title}</p>
-          <button onClick={() => handleDelete(album.id)}>Delete</button>
+        <div key={album.id} className="card my-2">
+          <div className="card-body">
+            <h5 className="card-title">{album.title}</h5>
+            <button onClick={() => handleDelete(album.id)} className="btn btn-danger">Delete</button>
+          </div>
         </div>
       ))}
     </div>

@@ -18,27 +18,32 @@ const CreateTodoForm: React.FC<CreateTodoFormProps> = ({ onTodoCreated }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input
-          type="text"
-          value={todo.title}
-          onChange={e => setTodo({ ...todo, title: e.target.value })}
-        />
-      </div>
-      <div>
-        <label>
-          Completed:
+    <div className="container my-3">
+      <h2>Create New Todo</h2>
+      <form onSubmit={handleSubmit} className="mb-3">
+        <div className="mb-3">
+          <label htmlFor="todoTitle" className="form-label">Title:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="todoTitle"
+            value={todo.title}
+            onChange={e => setTodo({ ...todo, title: e.target.value })}
+          />
+        </div>
+        <div className="mb-3 form-check">
           <input
             type="checkbox"
+            className="form-check-input"
+            id="todoCompleted"
             checked={todo.completed}
             onChange={e => setTodo({ ...todo, completed: e.target.checked })}
           />
-        </label>
-      </div>
-      <button type="submit">Create Todo</button>
-    </form>
+          <label className="form-check-label" htmlFor="todoCompleted">Completed</label>
+        </div>
+        <button type="submit" className="btn btn-primary">Create Todo</button>
+      </form>
+    </div>
   );
 };
 

@@ -22,15 +22,23 @@ const TodoList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container my-3">
       <h1>Todos</h1>
       <CreateTodoForm onTodoCreated={loadTodos} />
-      {todos.map(todo => (
-        <div key={todo.id}>
-          <p>{todo.title} - {todo.completed ? 'Completed' : 'Not Completed'}</p>
-          <button onClick={() => handleDelete(todo.id)}>Delete</button>
-        </div>
-      ))}
+      <ul className="list-group">
+        {todos.map(todo => (
+          <li key={todo.id} className="list-group-item d-flex justify-content-between align-items-center">
+            <span className="d-flex align-items-center">
+              {todo.completed ? 
+                <i className="fas fa-check-circle text-success mr-3" style={{ fontSize: '1.2em' }}></i> : 
+                <i className="fas fa-times-circle text-danger mr-3" style={{ fontSize: '1.2em' }}></i>
+              }
+              <span>{todo.title}</span>
+            </span>
+            <button onClick={() => handleDelete(todo.id)} className="btn btn-danger">Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

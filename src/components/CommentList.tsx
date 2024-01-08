@@ -22,13 +22,15 @@ const CommentList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container my-3">
       <h1>Comments</h1>
       <CreateCommentForm onCommentCreated={loadComments} />
       {comments.map(comment => (
-        <div key={comment.id}>
-          <p>{comment.body}</p>
-          <button onClick={() => handleDelete(comment.id)}>Delete</button>
+        <div key={comment.id} className="card my-2">
+          <div className="card-body">
+            <p className="card-text">{comment.body}</p>
+            <button onClick={() => handleDelete(comment.id)} className="btn btn-danger">Delete</button>
+          </div>
         </div>
       ))}
     </div>

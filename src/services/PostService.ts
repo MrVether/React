@@ -4,12 +4,16 @@ import { Post } from '../models/Post';
 const API_URL = 'https://jsonplaceholder.typicode.com/posts';
 
 export const fetchPosts = async (): Promise<Post[]> => {
- 
+  try {
 
   const response = await axios.get<Post[]>(API_URL);
+  console.log('Fetched posts:', response.data); 
 
   return response.data;
-
+} catch (error) {
+  console.error('Error fetching posts:', error);
+  throw error;
+}
 };
 
 export const createPost = async (post: Post): Promise<Post> => {
@@ -26,7 +30,7 @@ export const createPost = async (post: Post): Promise<Post> => {
 // services/PostService.ts
 export const deletePost = async (id: number): Promise<void> => {
   try {
-    const response = await axios.delete(`${API_URL}${id}`);
+    const response = await axios.delete(`${API_URL}/${id}`);
     console.log('Deleted Post Response:', response.data);
   } catch (error) {
     console.error('Error deleting post:', error);

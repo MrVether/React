@@ -23,7 +23,7 @@ const PostList: React.FC = () => {
 
   const handleDelete = async (id: number) => {
     await deletePost(id);
-    fetchData(); // Użyj funkcji fetchData do odświeżenia listy
+    fetchData();
   };
 
   const findPhotoUrlById = (photoId: number) => {
@@ -32,15 +32,17 @@ const PostList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container my-3">
       <h1>Posts</h1>
       <CreatePostForm onPostCreated={fetchData} photos={photos} />
       {posts.map(post => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-          {post.photoId && <img src={findPhotoUrlById(post.photoId)} alt={post.title} />}
-          <button onClick={() => handleDelete(post.id)}>Delete</button>
+        <div key={post.id} className="card my-2">
+          <div className="card-body">
+            <h5 className="card-title">{post.title}</h5>
+            <p className="card-text">{post.body}</p>
+            {post.photoId && <img src={findPhotoUrlById(post.photoId)} alt={post.title} className="img-fluid" />}
+            <button onClick={() => handleDelete(post.id)} className="btn btn-danger mt-2">Delete</button>
+          </div>
         </div>
       ))}
     </div>

@@ -18,32 +18,41 @@ const CreateCommentForm: React.FC<CreateCommentFormProps> = ({ onCommentCreated 
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={comment.name}
-          onChange={e => setComment({ ...comment, name: e.target.value })}
-        />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={comment.email}
-          onChange={e => setComment({ ...comment, email: e.target.value })}
-        />
-      </div>
-      <div>
-        <label>Body:</label>
-        <textarea
-          value={comment.body}
-          onChange={e => setComment({ ...comment, body: e.target.value })}
-        />
-      </div>
-      <button type="submit">Create Comment</button>
-    </form>
+    <div className="container my-3">
+      <h2>Create New Comment</h2>
+      <form onSubmit={handleSubmit} className="mb-3">
+        <div className="mb-3">
+          <label htmlFor="commentName" className="form-label">Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="commentName"
+            value={comment.name}
+            onChange={e => setComment({ ...comment, name: e.target.value })}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="commentEmail" className="form-label">Email:</label>
+          <input
+            type="email"
+            className="form-control"
+            id="commentEmail"
+            value={comment.email}
+            onChange={e => setComment({ ...comment, email: e.target.value })}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="commentBody" className="form-label">Body:</label>
+          <textarea
+            className="form-control"
+            id="commentBody"
+            value={comment.body}
+            onChange={e => setComment({ ...comment, body: e.target.value })}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Create Comment</button>
+      </form>
+    </div>
   );
 };
 

@@ -18,33 +18,42 @@ const CreateUserForm: React.FC<CreateUserFormProps> = ({ onUserCreated }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={user.name}
-          onChange={e => setUser({ ...user, name: e.target.value })}
-        />
-      </div>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          value={user.username}
-          onChange={e => setUser({ ...user, username: e.target.value })}
-        />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={user.email}
-          onChange={e => setUser({ ...user, email: e.target.value })}
-        />
-      </div>
-      <button type="submit">Create User</button>
-    </form>
+    <div className="container my-3">
+      <h2>Create New User</h2>
+      <form onSubmit={handleSubmit} className="mb-3">
+        <div className="mb-3">
+          <label htmlFor="userName" className="form-label">Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="userName"
+            value={user.name}
+            onChange={e => setUser({ ...user, name: e.target.value })}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="userUsername" className="form-label">Username:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="userUsername"
+            value={user.username}
+            onChange={e => setUser({ ...user, username: e.target.value })}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="userEmail" className="form-label">Email:</label>
+          <input
+            type="email"
+            className="form-control"
+            id="userEmail"
+            value={user.email}
+            onChange={e => setUser({ ...user, email: e.target.value })}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Create User</button>
+      </form>
+    </div>
   );
 };
 

@@ -22,16 +22,22 @@ const PhotoList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container my-3">
       <h1>Photos</h1>
       <CreatePhotoForm onPhotoCreated={loadPhotos} />
-      {photos.map(photo => (
-        <div key={photo.id}>
-          <p>{photo.title}</p>
-          <img src={photo.thumbnailUrl} alt={photo.title} />
-          <button onClick={() => handleDelete(photo.id)}>Delete</button>
-        </div>
-      ))}
+      <div className="row">
+        {photos.map(photo => (
+          <div key={photo.id} className="col-md-4 mb-3">
+            <div className="card">
+              <img src={photo.thumbnailUrl} className="card-img-top" alt={photo.title} />
+              <div className="card-body">
+                <h5 className="card-title">{photo.title}</h5>
+                <button onClick={() => handleDelete(photo.id)} className="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

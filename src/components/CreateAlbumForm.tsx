@@ -18,17 +18,22 @@ const CreateAlbumForm: React.FC<CreateAlbumFormProps> = ({ onAlbumCreated }) => 
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input
-          type="text"
-          value={album.title}
-          onChange={e => setAlbum({ ...album, title: e.target.value })}
-        />
-      </div>
-      <button type="submit">Create Album</button>
-    </form>
+    <div className="container my-3">
+      <h2>Create New Album</h2>
+      <form onSubmit={handleSubmit} className="mb-3">
+        <div className="mb-3">
+          <label htmlFor="albumTitle" className="form-label">Title:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="albumTitle"
+            value={album.title}
+            onChange={e => setAlbum({ ...album, title: e.target.value })}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Create Album</button>
+      </form>
+    </div>
   );
 };
 
