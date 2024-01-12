@@ -6,7 +6,7 @@ import CreateAlbumForm from './CreateAlbumForm';
 
 const AlbumList: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
-
+ 
   useEffect(() => {
     loadAlbums();
   }, []);

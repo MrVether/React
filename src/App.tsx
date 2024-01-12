@@ -15,7 +15,7 @@ const App: React.FC = () => {
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">Kurde nie wiem jakiś blog cokolwiek</NavLink>
+          <NavLink className="navbar-brand" to="/">Ticketing system</NavLink>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">

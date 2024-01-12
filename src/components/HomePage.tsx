@@ -56,7 +56,6 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="container my-3">
-      <h1>Welcome to the HomePage</h1>
       {posts.map(post => {
         const photo = findPhotoByPostId(post.id);
         const album = photo ? findAlbumByPhotoId(photo.id) : null;
@@ -64,12 +63,14 @@ const HomePage: React.FC = () => {
         return (
           <div key={post.id} className="card my-2">
             <div className="card-body">
-              <h5 className="card-title">{post.title}</h5>
+              <h1 className="card-title">Incident: {post.title}</h1>
+            <br/>
+              <p className="card-text"><h3>Issue description: </h3>{post.body}</p>
+              {album && <p className="card-text"><h3>Issue category:</h3> {album.title}</p>}
+              {randomUser && <p className="card-text"><h3>Author:</h3> {randomUser.name}</p>}
+              <h3>Screenshot attached: </h3>
               {photo && <img src={photo.thumbnailUrl} alt={post.title} className="img-fluid" style={{ maxWidth: '200px' }} />}
-              <p className="card-text">{post.body}</p>
-              {album && <p className="card-text">Album: {album.title}</p>}
-              {randomUser && <p className="card-text">Author: {randomUser.name}</p>}
-              <h2>Todo</h2>
+              <h3>Familiar ticket: </h3>
       {todos.map(todo => (
         <p key={todo.id}>{todo.title} - {todo.completed ? 'Completed' : 'Not Completed'}</p>
       ))}
